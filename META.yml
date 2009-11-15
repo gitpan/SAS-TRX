@@ -1,0 +1,13 @@
+--- #YAML:1.0
+name:                SAS-TRX
+version:             0.02
+abstract:            [Abstract] class, provides SAS transport (XPORT) format decoding.
+license:             ~
+author:              
+    - Alexander Kuznetsov <assa@>
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
