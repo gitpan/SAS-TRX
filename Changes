@@ -1,6 +1,9 @@
 Revision history for Perl extension SAS::TRX.
 
+0.03  Mon Nov  15
+	- CPAN distribution clean-up
+0.02  Mon Nov  12
+	- simplified interface
 0.01  Mon Nov  9 23:40:51 2009
-	- original version; created by h2xs 1.23 with options
-		-AX SAS::TRX
+	- original version
 
