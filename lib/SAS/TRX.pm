@@ -4,7 +4,7 @@ use 5.008;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use IO::File;
 
@@ -285,7 +285,7 @@ Calls [overloaded] methods for subsequent output formatting.
 
   use base SAS::TRX;
 
-  Provide SAS TRX-related functionality for a child.
+  Provides SAS TRX-related functionality for a child.
 
 =item B<load>
 
@@ -310,6 +310,8 @@ The following deviations from standard are allowed:
 	1. Numbers can be any length >1 bytes, exponent is always 7 bit
 	2. "Missing values" may have any non-zero exponent
 
+Removes leading and trailing whitespaces while character values transformation.
+
 =head2 EXPORT
 
 Nothing is exported.
@@ -317,7 +319,7 @@ Nothing is exported.
 
 =head1 SEE ALSO
 
-SAS::TRX::SQL for example of usage
+SAS::TRX::MySQL for example of usage
 
 TS-140 (http://support.sas.com/techsup/technote/ts140.html)
 for format description
@@ -325,7 +327,7 @@ for format description
 
 =head1 AUTHOR
 
-Alexander Kuznetsov, E<lt>acca@cpan.orgE<gt>
+Alexander Kuznetsov, E<lt>acca (at) cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

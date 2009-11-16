@@ -1,9 +1,13 @@
 Revision history for Perl extension SAS::TRX.
 
-0.03  Mon Nov  15
+0.04  Sun 15 Nov 2009 22:52:00
+	- Added MySQL exporter
+
+0.03  Sun Nov  15
 	- CPAN distribution clean-up
+
 0.02  Mon Nov  12
 	- simplified interface
+
 0.01  Mon Nov  9 23:40:51 2009
 	- original version
-

@@ -1,10 +1,10 @@
 --- #YAML:1.0
 name:                SAS-TRX
-version:             0.03
+version:             0.04
 abstract:            [Abstract] class, provides SAS transport (XPORT) format decoding.
 license:             ~
 author:              
-    - Alexander Kuznetsov <acca@cpan.org>
+    - Alexander Kuznetsov <acca (at) cpan.org>
 generated_by:        ExtUtils::MakeMaker version 6.42
 distribution_type:   module
 requires:     

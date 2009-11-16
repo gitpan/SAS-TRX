@@ -84,8 +84,7 @@ __END__
 
 =head1 NAME
 
-SAS::TRX::CY - Convert a TRX library into a YAML file with data description and
-a CSV file with data.
+SAS::TRX::CY - Convert a TRX library into a YAML description and CSV data.
 
 =head1 SYNOPSIS
 
@@ -112,7 +111,7 @@ SAS::TRX for the base class
 
 =head1 AUTHOR
 
-Alexander Kuznetsov, E<lt>acca@cpan.orgE<gt>
+Alexander Kuznetsov, E<lt>acca (at) cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

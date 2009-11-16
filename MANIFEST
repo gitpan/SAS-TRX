@@ -1,8 +1,9 @@
 Changes
 lib/SAS/TRX.pm
 lib/SAS/TRX/CY.pm
+lib/SAS/TRX/MySQL.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 README
 t/SAS-TRX.t
 META.yml                                 Module meta-data (added by MakeMaker)
