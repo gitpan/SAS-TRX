@@ -111,7 +111,7 @@ SAS::TRX for the base class
 
 =head1 AUTHOR
 
-Alexander Kuznetsov, E<lt>acca (at) cpan.orgE<gt>
+Alexander Kuznetsov, <acca (at) cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

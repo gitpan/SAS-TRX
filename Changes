@@ -1,5 +1,8 @@
 Revision history for Perl extension SAS::TRX.
 
+0.05  Tue 24 Nov 2009 08:40:27
+	- Added SQLite exporter, minor changes in POD
+
 0.04  Sun 15 Nov 2009 22:52:00
 	- Added MySQL exporter
 

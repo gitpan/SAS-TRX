@@ -1,10 +1,10 @@
 package SAS::TRX;
 
-use 5.008;
+use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use IO::File;
 
@@ -327,7 +327,7 @@ for format description
 
 =head1 AUTHOR
 
-Alexander Kuznetsov, E<lt>acca (at) cpan.orgE<gt>
+Alexander Kuznetsov, <acca (at) cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

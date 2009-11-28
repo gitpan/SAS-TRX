@@ -1,4 +1,4 @@
-package SAS::TRX::MySQL;
+package SAS::TRX::SQLite;
 #
 #	Format TRX-learned structure and data into MySQL dialect
 #
@@ -28,28 +28,6 @@ sub new
 
 	bless ($self,$class);
         return $self;
-}
-
-
-#
-#	Can be used to construct data a row header
-#
-sub data_header
-{
-	my $self	= shift;
-	my $dsname	= shift;
-
-	print  { $self->{DATASET} } "INSERT INTO $dsname (",
-		join(',', @{$self->{TRX}{$dsname}{CNAMES}}),
-		") VALUES \n";
-}
-sub data_footer
-{
-	my $self	= shift;
-	my $dsname	= shift;
-
-	seek $self->{DATASET}, -2, 1;	# Write over the last ",\n"
-	print { $self->{DATASET} } ";\n";
 }
 
 
@@ -86,7 +64,9 @@ sub data_row
 			$$row[$i] = 'NULL';
 		}
 	}
-	print { $self->{DATASET} } '('. join(',', @{ $row }),"),\n";
+	print  { $self->{DATASET} } "INSERT INTO $dsname (",
+		join(',', @{$self->{TRX}{$dsname}{CNAMES}}),
+		') VALUES ('. join(',', @{ $row }),"),\n";
 }
 
 #
@@ -117,13 +97,13 @@ __END__
 
 =head1 NAME
 
-SAS::TRX::MySQL - Format TRX-learned structure and data into MySQL dialect.
+SAS::TRX::SQLite - Format TRX-learned structure and data into SQLITE dialect.
 
 =head1 SYNOPSIS
 
-  use SAS::TRX::MySQL;
+  use SAS::TRX::SQLite;
 
-  my $trx = new SAS::TRX::MySQL DATASET=>'trx_insert.sql', STRUCT=>'trx_dd.sql';
+  my $trx = new SAS::TRX::SQLite DATASET=>'trx_insert.sql', STRUCT=>'trx_dd.sql';
   $trx->load('source.trx');
 
 =head1 DESCRIPTION
@@ -132,11 +112,11 @@ SAS::TRX::MySQL - Format TRX-learned structure and data into MySQL dialect.
 Parses 'source.trx' and splits onto DATASET and STRUCT files. Make sure you have
 write access permission to the destination files. INSERT is in packed format like
 
-    INSERT INTO DATA_TABLE (COLUMN1, COLUMN2, ...) VALUES
-    (VALUE1, VALUE2, ...),
-    (VALUE1, VALUE2, ...),
+
+    INSERT INTO DATA_TABLE (COLUMN1, COLUMN2, ...) VALUES(VALUE1, VALUE2, ...);
+    INSERT INTO DATA_TABLE (COLUMN1, COLUMN2, ...) VALUES(VALUE1, VALUE2, ...);
     ...
-    (VALUE1, VALUE2, ...);
+    INSERT INTO DATA_TABLE (COLUMN1, COLUMN2, ...) VALUES(VALUE1, VALUE2, ...);
 
 =head1 SEE ALSO
 

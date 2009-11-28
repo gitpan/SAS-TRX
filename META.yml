@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                SAS-TRX
-version:             0.04
+version:             0.05
 abstract:            [Abstract] class, provides SAS transport (XPORT) format decoding.
 license:             ~
 author:              
