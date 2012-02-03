@@ -99,6 +99,38 @@ SAS::TRX::CY - Convert a TRX library into a YAML description and CSV data.
 Parses 'source.trx' and splits onto DATASET and STRUCT files. Make sure you have
 write access permission to the destination files.
 
+YAML defines data types in TRX terms:
+    ---
+    TABLE_NAME:
+	- LABEL: column1 label
+	  NAME: column1 name
+	  TYPE: CHAR or NUMBER
+	- LABEL: column2 label
+	  NAME: column2 name
+	  TYPE: CHAR or NUMBER
+
+To determine needed column length and distinguish INTEGER and FLOAT, use SAS::TRX::MySQL or SAS::TRX::SQLite.
+
+Each line in CSV file ends with '+' to describe the structure in the following section or '-' to indicate actual
+data rows. The '+' line contains the table name followed by column names.
+
+Thus the CSV parser may be like this:
+
+    my ($tbl, @cols, %data);
+    while (<>) {
+	chomp;
+	my $tag = chop;
+	if ($tag eq '+') {
+	    ($tbl, @cols) = split;
+	    next;
+	} elsif ($tag eq '-') {
+	    @data{@cols} = split;
+	    next;
+	} else {
+	    die 'Format violation';
+	}
+    }
+
 =head2 EXPORT
 
 Nothing is exported.
@@ -106,8 +138,8 @@ Nothing is exported.
 
 =head1 SEE ALSO
 
-SAS::TRX for the base class
-
+    SAS::TRX for the base class
+    SAS::TRX::MySQL, SAS::TRX::SQLite for data types
 
 =head1 AUTHOR
 

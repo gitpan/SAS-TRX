@@ -1,5 +1,8 @@
 Revision history for Perl extension SAS::TRX.
 
+0.06  Fri 03 Feb 2012 15:08:06
+        - Fixed processing for the last record padding
+
 0.05  Tue 24 Nov 2009 08:40:27
 	- Added SQLite exporter, minor changes in POD
 

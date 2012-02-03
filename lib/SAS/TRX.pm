@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use IO::File;
 
@@ -182,6 +182,7 @@ sub get_member
 		while (length($databuf) >= $rowlen) {
 			$self->row2array($dsname, $databuf, $format);
 			$databuf = substr($databuf, $rowlen);
+			last unless $databuf =~ /[^ ]/go;
 		}
 		read $self->{FH}, $tmp, 80;
 		$databuf .= $tmp;
