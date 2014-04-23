@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use IO::File;
 
@@ -178,15 +178,17 @@ sub get_member
 	# Observation data
 	$self->obs_hdr();
 	$databuf='';
-	do {
+	while (read( $self->{FH}, $tmp, 80 )) {
+		$databuf .= $tmp;
+		last if $databuf =~ m/$MEMBER_HEADER/o;
+
 		while (length($databuf) >= $rowlen) {
 			$self->row2array($dsname, $databuf, $format);
 			$databuf = substr($databuf, $rowlen);
 			last unless $databuf =~ /[^ ]/go;
 		}
-		read $self->{FH}, $tmp, 80;
-		$databuf .= $tmp;
-	} until (eof ($self->{FH}) || $tmp =~ m/$MEMBER_HEADER/o);
+		last if eof $self->{FH};	# read after eof may be wrong
+	}
 	$self->{NSTR_LEN} = $1;	# In case the library is joined from various platforms data
 
 	# Upload to destination. May create header for compressed INSERT
